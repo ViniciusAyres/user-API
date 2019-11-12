@@ -11,17 +11,17 @@ import (
 
 // UserController ...
 type UserController struct {
-	repository repository.User
+	Repository repository.User
 }
 
-// SaveUser ...
-func (u UserController) SaveUser(w http.ResponseWriter, r *http.Request) {
+//  ServeHttp ...
+func (u UserController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 
 	var user model.User
 	json.NewDecoder(r.Body).Decode(&user)
 
-	createdUser := service.CreateUser(user, u.repository)
+	createdUser := service.CreateUser(user, u.Repository)
 
 	json.NewEncoder(w).Encode(createdUser)
 }
