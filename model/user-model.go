@@ -1,4 +1,4 @@
-package service
+package model
 
 // User ...
 type User struct {
@@ -8,14 +8,4 @@ type User struct {
 	Password  string `json:"password"`
 	Birthdate string `json:"birthdate"`
 	CreatedAt string `json:createdAt`
-}
-
-// UserRepositorySaver ...
-type UserRepositorySaver interface {
-	Save(u User) User
-}
-
-// CreateUser creates user
-func CreateUser(u User, repository UserRepositorySaver) User {
-	return repository.Save(u)
 }
