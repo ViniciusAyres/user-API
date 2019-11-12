@@ -1,0 +1,18 @@
+Chamada post:
+{
+    "name": "batatinha",
+    "username": "admin",
+    "password": "12346",
+    "birthdate": "2019-11-12T00:37:44.359Z"
+}
+
+
+No banco:
+{
+    "_id": "5+95468348674",
+    "name": "batatinha",
+    "username": "admin",
+    "password": "12346",
+    "birthdate": "2019-11-12T00:37:44.359Z",
+    "createdAt": "2019-11-12T00:37:44.359Z"
+}
