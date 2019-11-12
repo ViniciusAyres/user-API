@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/ViniciusAyres/user-api/model"
+	"github.com/ViniciusAyres/user-API/model"
 )
 
 type stubRepository struct {
@@ -52,12 +52,12 @@ func TestUserController(t *testing.T) {
 		t.Fatalf("should return 201, got: %d", resp.StatusCode)
 	}
 
-	// var bodyParsed model.User
-	// json.NewDecoder(resp.Body).Decode(&bodyParsed)
+	var bodyParsed model.User
+	json.NewDecoder(resp.Body).Decode(&bodyParsed)
 
-	// if bodyParsed.ID != want.ID {
-	// 	t.Fatalf("error! got: [%s], want: [%s]", bodyParsed.ID, want.ID)
-	// }
+	if bodyParsed != want {
+		t.Fatalf("error! got: [%s], want: [%s]", bodyParsed.ID, want.ID)
+	}
 
 	// SaveUser()
 }

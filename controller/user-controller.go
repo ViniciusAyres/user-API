@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/ViniciusAyres/user-api/model"
-	"github.com/ViniciusAyres/user-api/repository"
-	"github.com/ViniciusAyres/user-api/service"
+	"github.com/ViniciusAyres/user-API/model"
+	"github.com/ViniciusAyres/user-API/repository"
+	"github.com/ViniciusAyres/user-API/service"
 )
 
 // UserController ...
