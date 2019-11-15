@@ -45,12 +45,16 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
 
-      - name: Test
+      - name: Generate Code
         run: |
           echo $PATH
           echo $(go env GOPATH)
-          export PATH=$PATH:$(go env GOPATH)/bin
+          export PATH=$PATH:$(go env GOPATH)/bin  
+          go get -v github.com/golang/mock/mockgen
           go generate ./...
+
+      - name: Test
+        run: |
           go test ./... -short -coverprofile cover.out -covermode=atomic
           cat cover.out >> coverage.txt
 
