@@ -40,6 +40,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
 
+      - name: Print ENVs
+        run: printenv
+
       - name: Test
         run: |
           export PATH=$PATH:$(go env GOPATH)/bin
