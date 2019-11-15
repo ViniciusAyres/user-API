@@ -36,14 +36,13 @@ jobs:
         uses: actions/setup-go@v1
         with:
           go-version: ${{ matrix.go-version }}
-        env:
-          GOPATH: ${{$HOME}}
 
       - name: Check out code
         uses: actions/checkout@v1
 
       - name: Test
         run: |
+          export PATH=$PATH:$(go env GOPATH)/bin
           go generate ./...
           go test ./... -short -coverprofile cover.out -covermode=atomic && cat cover.out >> coverage.txt
 
