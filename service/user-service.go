@@ -6,6 +6,6 @@ import (
 )
 
 // CreateUser creates user
-func CreateUser(u model.User, r repository.User) model.User {
+func CreateUser(u model.User, r repository.UserRepository) model.User {
 	return r.Save(u)
 }

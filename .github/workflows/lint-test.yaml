@@ -31,7 +31,6 @@ jobs:
         go-version: [1.12.x, 1.13.x]
         platform: [ubuntu-latest]
     runs-on: ${{ matrix.platform }}
-    runs-on: ubuntu-latest
     steps:
       - name: Set up Go
         uses: actions/setup-go@v1
@@ -42,14 +41,15 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Test
-        run: go test ./... -short -coverprofile cover.out -covermode=atomic && cat cover.out >> coverage.txt
+        run: |
+          go generate ./...
+          go test ./... -short -coverprofile cover.out -covermode=atomic && cat cover.out >> coverage.txt
 
       - name: Upload Coverage report to CodeCov
         uses: codecov/codecov-action@v1.0.0
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           file: ./coverage.txt
-
   # build:
   #   name: Build
   #   runs-on: ubuntu-latest
@@ -59,9 +59,7 @@ jobs:
   #       uses: actions/setup-go@v1
   #       with:
   #         go-version: 1.12
-
   #     - name: Check out code
   #       uses: actions/checkout@v1
-
   #     - name: Build
   #       run: make build
