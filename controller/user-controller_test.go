@@ -7,18 +7,15 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/ViniciusAyres/user-API/mocks"
 	"github.com/ViniciusAyres/user-API/model"
+	"github.com/golang/mock/gomock"
 )
 
-type stubRepository struct {
-	user model.User
-}
-
-func (r stubRepository) Save(u model.User) model.User {
-	return r.user
-}
-
 func TestUserController(t *testing.T) {
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
 	fixtureUser := model.User{
 		Name:      "João Roberto",
 		Username:  "joao.roberto",
@@ -41,8 +38,10 @@ func TestUserController(t *testing.T) {
 	req, _ := http.NewRequest(http.MethodPost, "/user", reader)
 	w := httptest.NewRecorder()
 
-	r := stubRepository{want}
-	userController := UserController{r}
+	m := mocks.NewMockUserRepository(ctrl)
+	m.EXPECT().Save(fixtureUser).Return(want)
+
+	userController := UserController{m}
 
 	userController.ServeHTTP(w, req)
 

@@ -11,7 +11,7 @@ import (
 
 // UserController ...
 type UserController struct {
-	Repository repository.User
+	Repository repository.UserRepository
 }
 
 //  ServeHttp ...
