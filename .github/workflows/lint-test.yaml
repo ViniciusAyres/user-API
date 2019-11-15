@@ -36,6 +36,8 @@ jobs:
         uses: actions/setup-go@v1
         with:
           go-version: ${{ matrix.go-version }}
+        env:
+          GOPATH: $HOME
 
       - name: Check out code
         uses: actions/checkout@v1
