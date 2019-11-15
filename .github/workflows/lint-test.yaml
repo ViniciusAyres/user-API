@@ -37,7 +37,7 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
         env:
-          GOPATH: $HOME
+          GOPATH: ${{$HOME}}
 
       - name: Check out code
         uses: actions/checkout@v1
