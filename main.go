@@ -22,7 +22,7 @@ func main() {
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
-	db, err := config.ConfigDB(ctx)
+	db, err := config.NewDB(ctx)
 	if err != nil {
 		log.Fatalf("todo: database configuration failed: %v", err)
 	}

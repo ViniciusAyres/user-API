@@ -8,8 +8,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-// ConfigDB Start db conection
-func ConfigDB(ctx context.Context) (*mongo.Database, error) {
+// NewDB Start db conection
+func NewDB(ctx context.Context) (*mongo.Database, error) {
 	uri := fmt.Sprintf(`mongodb://%s:%s@%s/%s`,
 		"userAPI",
 		"senha123",
