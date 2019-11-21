@@ -10,6 +10,7 @@ import (
 	"github.com/ViniciusAyres/user-API/mocks"
 	"github.com/ViniciusAyres/user-API/model"
 	"github.com/golang/mock/gomock"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 func TestUserController(t *testing.T) {
@@ -28,7 +29,7 @@ func TestUserController(t *testing.T) {
 		Username:  fixtureUser.Username,
 		Password:  fixtureUser.Password,
 		Birthdate: fixtureUser.Birthdate,
-		ID:        "1",
+		ID:        primitive.NewObjectID(),
 		CreatedAt: "2019-11-12T00:37:44.359Z",
 	}
 
