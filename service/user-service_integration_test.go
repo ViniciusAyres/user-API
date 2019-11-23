@@ -38,5 +38,9 @@ func TestCreateUser(t *testing.T) {
 			t.Errorf("got %s want %s", createdUser.ID, want.ID)
 		}
 
+		if createdUser.Password == fixtureUser.Password {
+			t.Errorf("want %s != %s", createdUser.Password, fixtureUser.Password)
+		}
+
 	})
 }
